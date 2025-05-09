@@ -44,6 +44,10 @@ Ideal for schools, colleges, and online educators focused on **inclusive educati
 - **Hosting**: Vercel
 
 ---
+## Diagram
+
+![image](https://github.com/user-attachments/assets/f859e8aa-ae97-43d2-a82c-91bddede6683)
+
 
 ## 🚀 How to Run Locally
 
