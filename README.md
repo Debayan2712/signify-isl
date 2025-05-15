@@ -1,5 +1,14 @@
 # Signify-ISL 📚🧏‍♂️
 
+<!--toc:start-->
+- [Signify-ISL 📚🧏‍♂️](#signify-isl-📚🧏‍️)
+  - [🔥 Features](#🔥-features)
+  - [🏫 Use Case: Online Classrooms for Deaf Students](#🏫-use-case-online-classrooms-for-deaf-students)
+  - [🛠️ Tech Stack](#🛠️-tech-stack)
+  - [🌁 Diagram](#🌁-diagram)
+  - [🚀 How to Run Locally](#🚀-how-to-run-locally)
+<!--toc:end-->
+
 **Signify-ISL** is a powerful, AI-driven communication and educational platform that translates Indian Sign Language (ISL) into text and speech in real-time. It's designed to support inclusive online education for the Deaf and hard-of-hearing community. Our mission is to make learning as seamless and accessible as possible for everyone—especially in virtual classroom environments.
 
 🌐 [Live Demo](https://signify-isl.vercel.app/)
@@ -44,15 +53,35 @@ Ideal for schools, colleges, and online educators focused on **inclusive educati
 - **Hosting**: Vercel
 
 ---
-## Diagram
+
+## 🌁 Diagram
 
 ![image](https://github.com/user-attachments/assets/f859e8aa-ae97-43d2-a82c-91bddede6683)
-
 
 ## 🚀 How to Run Locally
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/finefigo/signify-isl.git
-   cd signify-isl
 
+  ```bash
+  git clone https://github.com/finefigo/signify-isl.git
+  cd signify-isl
+  ```
+
+2. Create a virtual environment and activate:
+
+  ```bash
+  python3 -m venv .venv
+  # Unix
+  source .venv/bin/activate
+  # Windos
+  source .venv/Scripts/activate
+  ```
+
+3. Copy the generated files and run the http server:
+
+  ```bash
+  cp model/model.json model/gesture_mapping.json web/
+  python -m http.server 8000 -d web
+  ```
+
+Open the browser and navigate to `http://localhost:8000/`.
