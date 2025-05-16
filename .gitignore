@@ -219,6 +219,3 @@ out/
 # - assets/ (for logo and images)
 # - model/ (for model files)
 # - training_data/ (for training data)
-
-# copied generated model files
-web/*.json

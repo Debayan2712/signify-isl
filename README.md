@@ -67,21 +67,16 @@ Ideal for schools, colleges, and online educators focused on **inclusive educati
   cd signify-isl
   ```
 
-2. Create a virtual environment and activate:
+2. Copy generated model files to public directory:
 
   ```bash
-  python3 -m venv .venv
-  # Unix
-  source .venv/bin/activate
-  # Windos
-  source .venv/Scripts/activate
+  cp model/model.json model/gesture_mapping.json public/assets/
   ```
 
-3. Copy the generated files and run the http server:
+3. Serve the public directory:
 
   ```bash
-  cp model/model.json model/gesture_mapping.json web/
-  python -m http.server 8000 -d web
+  python3 -m http.server 8000 -d public
   ```
 
 Open the browser and navigate to `http://localhost:8000/`.
