@@ -70,7 +70,7 @@ function handleLogin(event) {
             setAuthToken(response.token, rememberMe);
             
             // Redirect to home page
-            window.location.href = './index.html';
+            window.location.href = '/index.html';
         } else {
             showFormError('Invalid email or password. Please try again.');
         }
@@ -160,7 +160,7 @@ function handleRegistration(event) {
             
             // Redirect to home page after a short delay
             setTimeout(() => {
-                window.location.href = './index.html';
+                window.location.href = '/index.html';
             }, 1500);
         } else {
             showFormError(response.message || 'Registration failed. Please try again.');
@@ -361,8 +361,8 @@ function updateUIForAuthenticatedUser() {
                     <span>My Account</span>
                 </a>
                 <div class="user-dropdown">
-                    <a href="./profile.html">Profile</a>
-                    <a href="./settings.html">Settings</a>
+                    <a href="/profile.html">Profile</a>
+                    <a href="/settings.html">Settings</a>
                     <a href="#" id="logout-button">Log Out</a>
                 </div>
             `;
@@ -392,7 +392,7 @@ function handleLogout(event) {
     clearAuthToken();
     
     // Redirect to home page
-    window.location.href = './index.html';
+    window.location.href = '/index.html';
 }
 
 /**
@@ -419,3 +419,62 @@ function simulateApiCall(data) {
         }, 1000);
     });
 } 
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.querySelector('.password-toggle i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}
+
+// Password strength meter
+const passwordInput = document.getElementById('password');
+const strengthMeter = document.getElementById('strength-meter-fill');
+const strengthText = document.getElementById('strength-text');
+
+passwordInput.addEventListener('input', updateStrengthMeter);
+
+function updateStrengthMeter() {
+    const password = passwordInput.value;
+    let strength = 0;
+    let feedback = '';
+
+    if (password.length >= 8) {
+        strength += 25;
+    }
+    if (password.match(/[A-Z]/)) {
+        strength += 25;
+    }
+    if (password.match(/[0-9]/)) {
+        strength += 25;
+    }
+    if (password.match(/[^A-Za-z0-9]/)) {
+        strength += 25;
+    }
+
+    strengthMeter.style.width = strength + '%';
+
+    if (strength <= 25) {
+        strengthMeter.style.backgroundColor = '#ff4d4d';
+        feedback = 'Weak';
+    } else if (strength <= 50) {
+        strengthMeter.style.backgroundColor = '#ffa64d';
+        feedback = 'Fair';
+    } else if (strength <= 75) {
+        strengthMeter.style.backgroundColor = '#4dff4d';
+        feedback = 'Good';
+    } else {
+        strengthMeter.style.backgroundColor = '#3a86ff';
+        feedback = 'Strong';
+    }
+
+    strengthText.textContent = feedback;
+}

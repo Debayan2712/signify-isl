@@ -578,7 +578,7 @@ async function loadModel() {
         console.log("Loading gesture mapping...");
         // Load gesture mapping (with fallback)
         try {
-            const gestureResponse = await fetch('./model/gesture_mapping.json');
+            const gestureResponse = await fetch('/gesture_mapping.json');
             if (gestureResponse.ok) {
                 gestureMapping = await gestureResponse.json();
                 console.log("Gesture mapping loaded:", gestureMapping);
@@ -606,7 +606,7 @@ async function loadModel() {
         console.log("Loading model configuration...");
         // Load model configuration
         try {
-            const modelResponse = await fetch('./model/model.json');
+            const modelResponse = await fetch('/model.json');
             if (!modelResponse.ok) {
                 throw new Error('Failed to load model configuration');
             }
